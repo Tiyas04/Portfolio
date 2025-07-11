@@ -92,9 +92,10 @@ function Home() {
   isHardWorking: true,
   isPassionate: true,
   hireable: function () {
-    return this.isHardWorking && 
-            this.isPassionate && 
-            this.skills.length >= 5;
+    return ( this.isHardWorking && 
+              this.isPassionate && 
+              this.skills.length >= 5
+    );
   }
 };`}
           </pre>

@@ -70,14 +70,14 @@ function Skills() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {skills.map(({ title, desc, imageurl }) => (
-          <section className="bg-black/30 rounded-2xl flex flex-col items-center justify-center space-y-4 hover:scale-105 transition-transform duration-300 shadow-lg">
+          <section
+            key={title}
+            className="bg-black/30 rounded-2xl flex flex-col items-center justify-center space-y-4 hover:scale-105 transition-transform duration-300 shadow-lg"
+          >
             <div className="bg-black/30 backdrop-blur-md border border-white/10 rounded-3xl mt-4 p-4 shadow-lg">
               <img className="w-24 h-24" src={imageurl} alt={title} />
             </div>
-            <div
-              key={title}
-              className="rounded-2xl p-6"
-            >
+            <div className="rounded-2xl p-6">
               <h2 className="text-2xl font-semibold text-blue-300 mb-2">
                 {title}
               </h2>
