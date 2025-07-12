@@ -46,7 +46,7 @@ function Projects(){
             title:"Portfolio",
             description:"My personal portfolio showcasing my skills and projects.",
             imageUrl:"https://res.cloudinary.com/dajgjkv5h/image/upload/v1752268065/Screenshot_2025-07-12_023725_qi3a4j.png",
-            liveUrl:"https://portfolio-indol-alpha-38.vercel.app/",
+            liveUrl:"https://tiyas.vercel.app",
             githubUrl:"https://github.com/Tiyas04/Portfolio"
         }
     ]
