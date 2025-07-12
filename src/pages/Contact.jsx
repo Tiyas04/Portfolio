@@ -1,6 +1,43 @@
-import { Phone, Mail, MapPin, Linkedin, Instagram } from "lucide-react";
+import { useState } from "react";
+import axios from "axios";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Linkedin,
+  Instagram,
+} from "lucide-react";
 
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    try {
+      await axios.post("https://portfolio-backend-d313.onrender.com/contact", formData);
+      setStatus("Message sent successfully!");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setStatus("Failed to send message. Please try again later.");
+      console.error(error);
+    }
+  };
+
   return (
     <div className="py-16 px-6 md:px-12 ">
       <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 text-white font-mono">
@@ -61,22 +98,34 @@ function Contact() {
 
         {/* Contact Form */}
         <div className="bg-black/30 backdrop-blur-md rounded-2xl p-8 w-full max-w-lg shadow-xl border border-gray-600 text-white">
-          <form action="">
+          <form onSubmit={handleSubmit}>
             <div className="flex flex-col space-y-4">
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
                 className="p-3 rounded bg-black/10 border border-gray-600 focus:outline-none"
+                required
               />
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
                 className="p-3 rounded bg-black/10 border border-gray-600 focus:outline-none"
+                required
               />
               <textarea
+                name="message"
                 placeholder="Your Message"
                 rows={4}
+                value={formData.message}
+                onChange={handleChange}
                 className="p-3 rounded bg-black/10 border border-gray-600 focus:outline-none resize-none"
+                required
               ></textarea>
               <button
                 type="submit"
@@ -84,6 +133,7 @@ function Contact() {
               >
                 Send Message
               </button>
+              {status && <p className="text-sm text-center mt-2">{status}</p>}
             </div>
           </form>
         </div>
