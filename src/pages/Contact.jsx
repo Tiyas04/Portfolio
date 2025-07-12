@@ -80,7 +80,7 @@ function Contact() {
               ></textarea>
               <button
                 type="submit"
-                className="bg-gradient-to-tr from-blue-600 via-blue-700 to-blue-900 text-white p-3 rounded hover:opacity-90 transition"
+                className="bg-gradient-to-tr from-blue-600 via-blue-700 to-blue-900 text-white p-3 cursor-pointer rounded hover:opacity-90 transition"
               >
                 Send Message
               </button>
